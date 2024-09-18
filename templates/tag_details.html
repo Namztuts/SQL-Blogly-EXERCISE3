@@ -1,0 +1,40 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- block title -->
+{% block title %}{{tag.name}}{% endblock %}
+<!-- block content start-->
+{% block content %}
+<h1>{{tag.name}}</h1>
+<h3>More posts with <i>{{tag.name}}</i></h3>
+{% if posts %}
+<ul>
+   {% for post in posts %}
+   <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+   {% endfor %}
+</ul>
+{% endif %}
+<div class="post_details_buttons">
+   <p>
+      <a
+         href="/tags"
+         class="cancel_button"
+         >Cancel</a
+      >
+   </p>
+   <p>
+      <a
+         href="/tags/{{tag.id}}/edit"
+         class="edit_user_button"
+         >Edit</a
+      >
+   </p>
+   <p>
+      <a
+         href="/tags/{{tag.id}}/delete"
+         class="delete_user_button"
+         >Delete</a
+      >
+   </p>
+</div>
+
+{% endblock %}
